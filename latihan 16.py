@@ -10,13 +10,22 @@ class Membership:
                               {'Membership': 'Gold', 'Monthly Expense': 6,'Monthly Income': 10}, 
                               {'Membership': 'Silver', 'Monthly Expense': 5, 'Monthly Income': 7}] 
 
-  def show_benefit(self):
+  def show_benefit(self): 
+      """
+      Fungsi ini digunakan untuk cari benefit
+      """
       print (tabulate(self.database,headers='keys'))
 
   def show_requirements(self):
+      """
+      Fungsi ini digunakan untuk menunjukkan minimal requirement dalam bentuk tabel
+      """
       print (tabulate(self.membership_req,headers='keys', tablefmt='grid'))
 
   def predict_membership(self, user_expense:int, user_income:int):
+      """
+      Fungsi ini digunakan untuk memprediksi jenis membership berdasarkan income dan expense
+      """
       #r_value_plat = ((user_expense-self.membership_req[0]['Monthly Expense'])**2 + (user_income-self.membership_req[0]['Monthly Income'])**2)**(1/2)
       #r_value_gold = ((user_expense-self.membership_req[1]['Monthly Expense'])**2 + (user_income-self.membership_req[1]['Monthly Income'])**2)**(1/2)
       #r_value_silver = ((user_expense-self.membership_req[2]['Monthly Expense'])**2 + (user_income-self.membership_req[2]['Monthly Income'])**2)**(1/2)
@@ -32,17 +41,20 @@ class Membership:
       print(f'Berdasarkan penghasilan dan pengeluaran, kamu layak jadi member {tier_user}')
 
   def calculate_price(self, membership, list_harga_barang):
-    total_harga = sum(list_harga_barang)
+      """
+      Fungsi ini digunakan untuk menghitung harga setelah diskon
+      """
+      total_harga = sum(list_harga_barang)
 
-    if membership == 'Platinum':
-      diskon = 0.15
-    elif membership == 'Gold':
-      diskon = 0.10
-    elif membership == 'Silver':
-      diskon = 0.08
+      if membership == 'Platinum':
+        diskon = 0.15
+      elif membership == 'Gold':
+        diskon = 0.10
+      elif membership == 'Silver':
+        diskon = 0.08
 
-    final_price = total_harga*(1-diskon)
-    print(f'Total harga setelah diskon adalah {final_price}')
+      final_price = total_harga*(1-diskon)
+      print(f'Total harga setelah diskon adalah {final_price}')
 
         
 
